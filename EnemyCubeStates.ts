@@ -15,11 +15,9 @@ export class EnemyCubeIdleState extends State<EnemyCube> {
 
     // Finds the first player in range
     const playerInRange = players.find((player) => {
-      player.position.get().distance(currentPosition) <= detectionRange;
-    });
+      const distance = player.position.get().distance(currentPosition);
 
-    console.log({
-      playerInRange: playerInRange ? playerInRange.name.get() : null,
+      return distance <= detectionRange;
     });
 
     if (playerInRange) {
