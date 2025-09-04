@@ -62,6 +62,10 @@ export class EnemyCubeChasePlayerState extends State<EnemyCube> {
     if (distanceToTarget > this._component.getDetectionRange()) {
       this._component.setTargetPlayer(null);
       this._component.setState(new EnemyCubeIdleState());
+    } else {
+      this._component
+        .getNavMeshAgent()
+        .destination.set(targetPlayer.position.get());
     }
   }
 
